@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Haoyue Liu / 刘昊岳</title>
+<meta content="Haoyue Liu / 刘昊岳 - Researcher in Event-based Vision" name="description"/>
+<style>
+    :root{
+      --page:#f7fbff; --card:rgba(255,255,255,.94); --blue:#2563eb; --sky:#38a3f1;
+      --navy:#0f2d52; --text:#26394f; --muted:#65778b; --soft:#eaf5ff;
+      --line:rgba(43,88,130,.14); --shadow:0 24px 70px rgba(28,79,128,.11);
+      --shadow-soft:0 14px 36px rgba(28,79,128,.08); --max:1120px;
+    }
+    *{box-sizing:border-box} html{scroll-behavior:smooth}
+    body{margin:0;color:var(--text);font-family:ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",Arial,sans-serif;line-height:1.72;background:radial-gradient(circle at 8% 4%,rgba(56,163,241,.20),transparent 28%),radial-gradient(circle at 92% 10%,rgba(37,99,235,.13),transparent 30%),linear-gradient(180deg,#fff 0%,var(--page) 45%,#fff 100%)}
+    a{color:inherit;text-decoration:none}
+    .topbar{position:sticky;top:0;z-index:20;border-bottom:1px solid var(--line);background:rgba(255,255,255,.84);backdrop-filter:blur(18px)}
+    .nav{max-width:var(--max);margin:auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .brand{display:inline-flex;align-items:center;gap:12px}.brand-mark{width:38px;height:38px;border-radius:14px;display:grid;place-items:center;color:#fff;font-weight:850;background:linear-gradient(135deg,var(--blue),var(--navy));box-shadow:0 12px 26px rgba(37,99,235,.18)}
+    .brand-text{display:flex;flex-direction:column;line-height:1.18}.brand-name{color:var(--navy);font-weight:850;font-size:15px}.brand-role{color:var(--muted);font-size:12px;font-weight:650;margin-top:2px}
+    .nav-right{display:flex;align-items:center;gap:18px}.links{display:flex;gap:18px;color:var(--muted);font-size:14px;white-space:nowrap}.links a{position:relative}.links a:hover{color:var(--blue)}
+    .links a:after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:2px;border-radius:999px;background:linear-gradient(90deg,var(--blue),var(--sky));transition:width .2s}.links a:hover:after{width:100%}
+    .social-mini{display:flex;gap:8px;padding-left:18px;border-left:1px solid var(--line)}.social-mini a{width:34px;height:34px;display:grid;place-items:center;border-radius:12px;color:var(--navy);background:rgba(255,255,255,.78);border:1px solid var(--line);transition:.2s}.social-mini a:hover{transform:translateY(-2px);color:var(--blue);box-shadow:0 12px 26px rgba(28,79,128,.10)}
+    .icon{width:16px;height:16px;display:inline-block;flex:0 0 auto}.social-mini .icon{width:17px;height:17px}
+
+    main{max-width:var(--max);margin:auto;padding:58px 24px 82px}
+    .hero{margin-bottom:26px}
+    .hero-card,.section{border:1px solid var(--line);background:var(--card);box-shadow:var(--shadow);border-radius:30px;backdrop-filter:blur(22px)}
+    .hero-card{position:relative;overflow:hidden;padding:46px;display:grid;grid-template-columns:minmax(0,1fr) 246px;gap:36px;align-items:center}.hero-card:before{content:"";position:absolute;right:-90px;bottom:-150px;width:330px;height:330px;border-radius:50%;background:radial-gradient(circle,rgba(56,163,241,.18),transparent 68%)}
+    .hero-copy,.hero-avatar{position:relative;z-index:1}.hero-avatar{justify-self:end;width:100%;max-width:200px;height:250px;display:block;object-fit:contain;border-radius:24px;background:transparent}
+    .eyebrow{display:inline-flex;align-items:center;gap:9px;color:var(--blue);font-weight:800;letter-spacing:.11em;font-size:12px;text-transform:uppercase;margin-bottom:16px}.eyebrow:before{content:"";width:28px;height:2px;border-radius:999px;background:currentColor}
+    h1{margin:0;color:var(--navy);font-size:clamp(24px,3.2vw,38px);line-height:1.05;letter-spacing:-.048em}.subtitle{max-width:720px;margin:20px 0 0;color:var(--muted);font-size:18px}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:42px;padding:10px 16px;border-radius:999px;font-weight:760;font-size:14px;color:var(--navy);border:1px solid var(--line);background:rgba(255,255,255,.86);transition:.2s}
+    .btn.primary{color:#fff;border-color:transparent;background:linear-gradient(135deg,var(--blue),var(--navy));box-shadow:0 14px 32px rgba(37,99,235,.20)}.btn:hover{transform:translateY(-2px);color:var(--blue);box-shadow:0 14px 30px rgba(28,79,128,.12)}.btn.primary:hover{color:#fff}
+
+    .hero-position{margin:16px 0 0;color:var(--blue);font-size:18px;font-weight:780;letter-spacing:.01em}
+    .hero-address{margin:14px 0 0;color:var(--muted);font-style:normal;font-size:16px;line-height:1.75}
+    .hero-email{margin-top:12px;color:var(--text);font-size:16px}.hero-email a{color:var(--blue);font-weight:760;text-decoration:underline;text-underline-offset:3px}
+    .about-intro{max-width:920px;margin:0 0 24px;color:var(--muted);font-size:16px;line-height:1.8}.about-intro p{margin:0}.about-intro p+p{margin-top:12px}
+    .btn .icon{width:16px;height:16px}
+
+
+    .section{padding:34px;margin-top:24px}.section-head{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;padding-bottom:18px;border-bottom:1px solid var(--line);margin-bottom:24px}.section-title{margin:0;color:var(--navy);font-size:28px;letter-spacing:-.04em}.section-kicker{margin:0;color:#8494a7;font-size:14px}
+    .research-lead{margin-bottom:20px;padding:22px;border-radius:24px;border:1px solid var(--line);background:linear-gradient(180deg,#fff,#f4f9ff);box-shadow:0 10px 26px rgba(28,79,128,.045)}.focus-label{margin:0 0 10px;color:var(--blue);font-size:13px;font-weight:820;letter-spacing:.08em;text-transform:uppercase}.research-lead h3{margin:0 0 14px;color:var(--navy);font-size:22px;line-height:1.35}
+    .focus-list{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;color:var(--muted);font-size:14px}.focus-list li{display:flex;gap:9px}.focus-list li:before{content:"";width:7px;height:7px;margin-top:9px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--sky));flex:0 0 auto}
+    .research-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:22px}.interest-card{min-height:148px;padding:20px;border-radius:22px;background:linear-gradient(180deg,#fff,#f4f9ff);border:1px solid var(--line);transition:.2s}.interest-card:hover{transform:translateY(-3px);box-shadow:0 16px 38px rgba(28,79,128,.10)}
+    .num{width:34px;height:34px;border-radius:13px;display:grid;place-items:center;color:var(--blue);font-weight:850;background:var(--soft);margin-bottom:14px}.interest-card h3,.award h3{margin:0 0 8px;color:var(--navy);font-size:17px}.interest-card p,.award p{margin:0;color:var(--muted);font-size:14px}
+
+    .timeline,.pub-list{display:grid;gap:16px}.news-item,.award,.pub{border:1px solid var(--line);background:#fff;border-radius:18px;box-shadow:0 10px 26px rgba(28,79,128,.045)}.news-item{display:grid;grid-template-columns:92px 1fr;gap:20px;padding:18px}.news-date{color:var(--blue);font-weight:850;font-size:14px}.news-item p{margin:0}
+    #news .timeline{max-height:430px;overflow-y:auto;padding-right:10px;scrollbar-width:thin;scrollbar-color:rgba(37,99,235,.35) transparent}
+    #news .timeline::-webkit-scrollbar{width:8px}
+    #news .timeline::-webkit-scrollbar-track{background:transparent}
+    #news .timeline::-webkit-scrollbar-thumb{background:rgba(37,99,235,.28);border-radius:999px}
+    #news .timeline::-webkit-scrollbar-thumb:hover{background:rgba(37,99,235,.45)}
+    .pub-group+.pub-group{margin-top:30px}.pub-group-title{margin:0 0 14px;color:var(--navy);font-size:20px}.pub-list{counter-reset:pubs;gap:18px}.pub{position:relative;display:grid;grid-template-columns:minmax(0,1fr) 196px;gap:18px;align-items:center;padding:22px 22px 22px 78px}.pub:before{counter-increment:pubs;content:counter(pubs);position:absolute;left:22px;top:22px;width:34px;height:34px;border-radius:13px;display:grid;place-items:center;color:#fff;font-weight:850;background:linear-gradient(135deg,var(--blue),var(--navy))}
+    .pub-title{margin:0 0 8px;color:var(--navy);font-size:17px;font-weight:830;line-height:1.45}.pub-meta{margin:0;color:var(--muted);font-size:14px}.pub-venue{margin-top:8px;color:var(--blue);font-size:14px;font-weight:760}.pub-keywords{margin-top:8px;color:var(--muted);font-size:13.5px;line-height:1.55}.pub-keywords strong{color:var(--navy);font-weight:820}
+    .pub-thumb{width:196px;height:110px;border-radius:16px;overflow:hidden;border:1px solid var(--line);background:var(--soft);box-shadow:0 10px 24px rgba(28,79,128,.07);}
+    .pub-thumb img{width:100%;height:100%;display:block;object-fit:fill}
+    .tag-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}.tag{display:inline-flex;align-items:center;gap:6px;padding:5px 11px;border-radius:999px;background:var(--soft);color:var(--blue);font-size:12px;font-weight:760;transition:.2s}.tag:hover{background:#dceeff;color:#1d4ed8;transform:translateY(-1px)}.tag svg{width:13px;height:13px;display:block;flex:0 0 auto}
+    .cards-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.award{padding:18px}.service-text{display:grid;gap:8px;color:var(--text);font-size:16px}.service-text p{margin:0}.service-text strong{color:var(--navy)}.footer{text-align:center;margin-top:38px;color:var(--muted);font-size:14px}
+    @media(max-width:900px){.links,.social-mini{display:none}main{padding-top:28px}.research-grid,.cards-2,.focus-list{grid-template-columns:1fr}.hero-card{grid-template-columns:1fr;padding:32px}.hero-avatar{justify-self:start;max-width:220px;height:260px}.section-head{align-items:flex-start;flex-direction:column}.news-item{grid-template-columns:1fr;gap:6px}.pub{grid-template-columns:1fr;padding-left:22px;padding-top:70px}.pub-thumb{width:100%;max-width:260px;height:150px}}
+    
+    .profile-link {color: #2563eb; text-decoration: underline; text-underline-offset: 3px; font-weight: 600;}
+    .profile-link:hover {color: #1d4ed8;}
+
+    .black-text {color: #120053; font-weight: 600;}
+
+    .visitor-map-section {margin-top: 36px; display: flex; justify-content: center;}
+    .visitor-map-frame {width: 100%; max-width: 760px; height: 360px; border: 0; border-radius: 18px; overflow: hidden;}
+
+  </style>
+</head>
+<body>
+<header class="topbar">
+<nav aria-label="Primary navigation" class="nav">
+<a aria-label="Haoyue Liu, Researcher in Event-based Vision" class="brand" href="#home">
+<span class="brand-mark">HL</span>
+<span class="brand-text"><span class="brand-name">Haoyue Liu</span><span class="brand-role">Researcher in Event-based Vision</span></span>
+</a>
+<div class="nav-right">
+<div class="links"><a href="#home">Contact</a><a href="#about">Biography</a><a href="#news">News</a><a href="#publications">Publications</a><a href="#awards">Awards</a><a href="#services">Academic Services</a></div>
+<div aria-label="Social links" class="social-mini">
+<a aria-label="GitHub profile" href="https://github.com/Liu-haoyue" title="GitHub"><svg class="icon" viewbox="0 0 24 24"><path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.49 0-.24-.01-1.04-.02-1.89-2.78.62-3.37-1.22-3.37-1.22-.45-1.19-1.11-1.5-1.11-1.5-.91-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.9 1.57 2.35 1.12 2.92.85.09-.67.35-1.12.63-1.38-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.04 1.03-2.76-.1-.26-.45-1.31.1-2.72 0 0 .84-.28 2.75 1.05A9.3 9.3 0 0 1 12 6.93c.85 0 1.71.12 2.51.35 1.9-1.33 2.74-1.05 2.74-1.05.55 1.41.2 2.46.1 2.72.64.72 1.03 1.64 1.03 2.76 0 3.94-2.34 4.81-4.57 5.07.36.32.68.95.68 1.92 0 1.39-.01 2.51-.01 2.85 0 .27.18.6.69.49A10.1 10.1 0 0 0 22 12.25C22 6.58 17.52 2 12 2Z" fill="currentColor"></path></svg></a>
+<a aria-label="Google Scholar profile" href="https://scholar.google.com.hk/citations?user=DadbHdAAAAAJ&amp;hl=zh-CN" title="Google Scholar"><svg class="icon" viewbox="0 0 24 24"><path d="M12 3 1.8 9.1 12 15.2l8.2-4.9V17h2V9.1L12 3Zm0 14.1L5.4 13.2v3.2c0 2.1 3 3.8 6.6 3.8s6.6-1.7 6.6-3.8v-3.2L12 17.1Z" fill="currentColor"></path></svg></a>
+<a aria-label="LinkedIn profile" href="https://www.linkedin.com/in/haoyue-liu-3b111226a/" title="LinkedIn"><svg class="icon" viewbox="0 0 24 24"><path d="M5 3.5A2.5 2.5 0 1 1 5 8.5a2.5 2.5 0 0 1 0-5ZM3.2 10h3.6v10.5H3.2V10Zm6 0h3.4v1.44h.05c.47-.85 1.63-1.74 3.36-1.74 3.6 0 4.26 2.28 4.26 5.25v5.55h-3.6v-4.92c0-1.17-.02-2.68-1.7-2.68-1.7 0-1.96 1.28-1.96 2.6v5H9.2V10Z" fill="currentColor"></path></svg></a>
+</div>
+</div>
+</nav>
+</header>
+<main id="home">
+<section class="hero">
+<div class="hero-card">
+<div class="hero-copy">
+<!--<div class="eyebrow">Personal Profile · 个人简介</div>-->
+<h1>Haoyue Liu   刘昊岳</h1>
+<p class="hero-position">Postdoctoral Researcher</p>
+<address class="hero-address">
+            1037 Luoyu Road,<br/>
+            Huazhong University of Science and Technology (HUST),<br/>
+            Wuhan, China, 430074
+          </address>
+<p class="hero-email">Email: <a href="mailto:liuhy@hust.edu.cn">liuhy@hust.edu.cn</a></p>
+<div class="hero-actions">
+<a class="btn primary" href="mailto:liuhy@hust.edu.cn">Contact Me</a>
+<!--<a class="btn" href="#publications">Selected Publications</a>-->
+<a class="btn" href="https://github.com/Liu-haoyue" rel="noopener noreferrer" target="_blank"><svg aria-hidden="true" class="icon" viewbox="0 0 24 24"><path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.49 0-.24-.01-1.04-.02-1.89-2.78.62-3.37-1.22-3.37-1.22-.45-1.19-1.11-1.5-1.11-1.5-.91-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.9 1.57 2.35 1.12 2.92.85.09-.67.35-1.12.63-1.38-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.04 1.03-2.76-.1-.26-.45-1.31.1-2.72 0 0 .84-.28 2.75 1.05A9.3 9.3 0 0 1 12 6.93c.85 0 1.71.12 2.51.35 1.9-1.33 2.74-1.05 2.74-1.05.55 1.41.2 2.46.1 2.72.64.72 1.03 1.64 1.03 2.76 0 3.94-2.34 4.81-4.57 5.07.36.32.68.95.68 1.92 0 1.39-.01 2.51-.01 2.85 0 .27.18.6.69.49A10.1 10.1 0 0 0 22 12.25C22 6.58 17.52 2 12 2Z" fill="currentColor"></path></svg> GitHub</a>
+<a class="btn" href="https://scholar.google.com.hk/citations?user=DadbHdAAAAAJ&amp;hl=zh-CN" rel="noopener noreferrer" target="_blank"><svg aria-hidden="true" class="icon" viewbox="0 0 24 24"><path d="M12 3 1.8 9.1 12 15.2l8.2-4.9V17h2V9.1L12 3Zm0 14.1L5.4 13.2v3.2c0 2.1 3 3.8 6.6 3.8s6.6-1.7 6.6-3.8v-3.2L12 17.1Z" fill="currentColor"></path></svg> Google Scholar</a>
+<a class="btn" href="https://www.linkedin.com/in/haoyue-liu-3b111226a/" rel="noopener noreferrer" target="_blank"><svg aria-hidden="true" class="icon" viewbox="0 0 24 24"><path d="M5 3.5A2.5 2.5 0 1 1 5 8.5a2.5 2.5 0 0 1 0-5ZM3.2 10h3.6v10.5H3.2V10Zm6 0h3.4v1.44h.05c.47-.85 1.63-1.74 3.36-1.74 3.6 0 4.26 2.28 4.26 5.25v5.55h-3.6v-4.92c0-1.17-.02-2.68-1.7-2.68-1.7 0-1.96 1.28-1.96 2.6v5H9.2V10Z" fill="currentColor"></path></svg> LinkedIn</a>
+</div>
+</div>
+<img alt="Haoyue Liu profile photo" class="hero-avatar" src="images/hyliu.jpg"/>
+</div>
+</section>
+
+<section class="section" id="about">
+<div class="section-head"><div><h2 class="section-title">Biography</h2><p class="section-kicker">Biography and research interests.</p></div></div>
+<div class="about-intro">
+<p>I am currently a postdoctoral researcher at Huazhong University of Science and Technology (HUST). Previously, I received my Ph.D. degree in Artificial Intelligence from HUST in 2025, under the supervision of <a class="profile-link" href="https://scholar.google.com.hk/citations?user=5CS6T8AAAAAJ&amp;hl=en" rel="noopener noreferrer" target="_blank">Prof. Luxin Yan</a> and <a class="profile-link" href="https://owuchangyuo.github.io/" rel="noopener noreferrer" target="_blank">Prof. Yi Chang</a>. I obtained my M.S. and B.E. degrees from China University of Mining and Technology (CUMT).</p>
+<p>My current research interests include event-based vision, low-light and high-dynamic-range image imaging, and dynamic scene perception. <span class="black-text">My research aims to develop robust imaging and perception methods for challenging scenarios with extreme illumination, high-speed motion, and limited sensing resources.</span></p>
+</div>
+
+<!--
+<div class="research-lead">
+<p class="focus-label">Current Focus</p>
+<h3>High-speed, high-dynamic-range neuromorphic imaging for reliable perception.</h3>
+<ul class="focus-list">
+<li>Event signal modeling and enhancement</li>
+<li>Event-frame collaborative reconstruction</li>
+<li>Weak target detection and continuous tracking</li>
+<li>Aerospace and extreme-scene visual monitoring</li>
+</ul>
+</div>
+<div class="research-grid">
+<article class="interest-card"><div class="num">01</div><h3>事件相机与神经形态视觉</h3><p>事件信号建模、噪声抑制、时间戳校正、事件表征与事件增强。</p></article>
+<article class="interest-card"><div class="num">02</div><h3>事件-帧融合成像</h3><p>宽动态范围重建、极低光照成像、高速运动去模糊与双模协同重建。</p></article>
+<article class="interest-card"><div class="num">03</div><h3>弱小目标检测与跟踪</h3><p>复杂背景下目标增强、连续时间跟踪、空间远距暗弱目标探测。</p></article>
+<article class="interest-card"><div class="num">04</div><h3>航天与极端场景视觉监测</h3><p>火箭起飞段监测、小行星撞击观测、激光毁伤场景成像与感知。</p></article>
+</div>
+-->
+</section>
+
+
+<section class="section" id="news">
+<div class="section-head"><div><h2 class="section-title">News</h2><p class="section-kicker">Recent updates.</p></div></div>
+<div class="timeline">
+<article class="news-item"><div class="news-date">2026.04</div><p>Our workshop "<strong><i><a href="https://eventbasemultimodalvision.github.io/" style="text-decoration: underline;" target="_blank">Event-Based Multimodal Vision (EBMV)</a></i></strong>" has been accepted by ECCV'26.</p></article>
+<article class="news-item"><div class="news-date">2026.03</div><p>Three papers on event-based low-light imaging, turbulence mitigation, and object tracking have been accepted by <strong><i>CVPR'26</i></strong>, including one <span style="color:Red"><strong>Highlight</strong></span>.</p></article>
+<article class="news-item"><div class="news-date">2023.06</div><p>We won </i></strong><span style="color:Red"><strong>1st</strong></span> place in the track 'Event-Based Pose Estimation' in the <strong><i>CVPR'26 SPARK AI4Space</i></strong> Challenge.</p></article>
+<article class="news-item"><div class="news-date">2025.09</div><p>Our diffusion-based optical flow paper has been accepted by <strong><i>NeurIPS'25 </i></strong>(<span style="color:Red"><strong>Spotlight</strong></span>).</p></article>
+<article class="news-item"><div class="news-date">2025.09</div><p>I was invited to give an online talk titled <strong><i>“Event-based High-Speed and High Dynamic Range Imaging”</i></strong> at the 18th Member Sharing Forum of the China Society of Image and Graphics (CSIG).</p></article>
+<article class="news-item"><div class="news-date">2025.06</div><p>Our event-based 4D Gaussian splatting paper has been accepted by <strong><i>ICCV'25</i></strong>.</p></article>
+<article class="news-item"><div class="news-date">2025.02</div><p>Our event-based video frame interpolation paper has been accepted by <strong><i>CVPR'25</i></strong>.</p></article>
+<article class="news-item"><div class="news-date">2025.02</div><p>Our event-based dense and continuous optical flow paper has been accepted by <strong><i>CVPR'25</i></strong>.</p></article>
+<article class="news-item"><div class="news-date">2024.02</div><p>Our work for event-based low-light imaging has been accepted by <strong><i>TPAMI'25</i></strong>.</p></article>
+<article class="news-item"><div class="news-date">2024.02</div><p>Our work for event-based nighttime HDR imaging has been accepted by <strong><i>CVPR'24</i></strong>.</p></article>
+<article class="news-item"><div class="news-date">2024.01</div><p>Our work for event-based nighttime optical flow estimation has been accepted by <strong><i>ICLR'24</i></strong> (<span style="color:Red"><strong>Spotlight</strong></span>).</p></article>
+<article class="news-item"><div class="news-date">2023.06</div><p>We won </i></strong><span style="color:Red"><strong>1st</strong></span> place in the track 'Atmospheric Turbulence Mitigation' in the <strong><i>CVPR'23 UG2+</i></strong> Challenge.</p></article>
+</div>
+</section>
+<section class="section" id="publications">
+<div class="section-head"><div><h2 class="section-title">Publications</h2><p class="section-kicker">Published and unpublished works.</p></div></div>
+<div class="pub-group">
+<!--<h3 class="pub-group-title">已出版</h3>-->
+<div class="pub-list">
+
+
+
+<article class="pub"><div class="pub-content"><h3 class="pub-title">NEC-Diff: Noise-Robust Event-RAW Complementary Diffusion for Seeing Motion in Extreme Darkness</h3>
+<p class="pub-meta"><strong>Haoyue Liu</strong>, Jinghan Xu, Luxin Feng, Hanyu Zhou, Haozhi Zhao, Yi Chang, Luxin Yan.</p>
+<div class="pub-venue">IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR), 2026</div><div class="pub-keywords"><strong>Keywords: </strong>event camera; low-light imaging; diffusion model</div>
+<div class="tag-row">
+  <a class="tag" href="https://arxiv.org/abs/2603.20005" rel="noopener noreferrer" target="_blank"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M6 2h8l4 4v16H6V2Zm7 1.5V7h3.5L13 3.5ZM8.5 11h7v1.5h-7V11Zm0 3.5h7v1.5h-7v-1.5Zm0 3.5h5v1.5h-5V18Z" fill="currentColor"></path></svg>Paper</a>
+  <a class="tag" href="https://github.com/jinghan-xu/NEC-Diff" rel="noopener noreferrer" target="_blank"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="m8.7 16.6-5-4.6 5-4.6 1.2 1.4L6.4 12l3.5 3.2-1.2 1.4Zm6.6 0-1.2-1.4 3.5-3.2-3.5-3.2 1.2-1.4 5 4.6-5 4.6ZM11.1 18l-1.8-.6L12.9 6l1.8.6L11.1 18Z" fill="currentColor"></path></svg>Code</a>
+  <a class="tag" href="" rel="noopener noreferrer" target="_blank"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M12 3C7.6 3 4 4.3 4 6v12c0 1.7 3.6 3 8 3s8-1.3 8-3V6c0-1.7-3.6-3-8-3Zm0 2c3.7 0 5.8.9 6 1-.2.2-2.3 1-6 1s-5.8-.9-6-1c.2-.2 2.3-1 6-1Zm6 5c-.8.6-3 1.2-6 1.2S6.8 10.6 6 10V8.3c1.5.6 3.7.9 6 .9s4.5-.3 6-.9V10Zm0 4c-.8.6-3 1.2-6 1.2S6.8 14.6 6 14v-1.7c1.5.6 3.7.9 6 .9s4.5-.3 6-.9V14Zm-6 5.2c-3 0-5.2-.6-6-1.2v-1.7c1.5.6 3.7.9 6 .9s4.5-.3 6-.9V18c-.8.6-3 1.2-6 1.2Z" fill="currentColor"></path></svg>Dataset</a>
+</div>
+</div><div class="pub-thumb" href="#"><img alt="NEC-diff paper thumbnail" src="images/publication/CVPR2026_NECdiff.png"/></div></article>
+
+<article class="pub"><div class="pub-content"><h3 class="pub-title">High-Quality and Efficient Turbulence Mitigation with Events</h3>
+<p class="pub-meta">Xiaoran Zhang, Jian Ding, Yuxing Duan, <strong>Haoyue Liu*</strong>, Gang Chen, Yi Chang, Luxin Yan</p>
+<div class="pub-venue">IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR), <strong><span style="color:#00704f">Highlight</span></strong>, 2026</div><div class="pub-keywords"><strong>Keywords: </strong>event camera; turbulence mitigation; video eestoration</div>
+<div class="tag-row">
+  <a class="tag" href="https://arxiv.org/abs/2603.20708" rel="noopener noreferrer" target="_blank"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M6 2h8l4 4v16H6V2Zm7 1.5V7h3.5L13 3.5ZM8.5 11h7v1.5h-7V11Zm0 3.5h7v1.5h-7v-1.5Zm0 3.5h5v1.5h-5V18Z" fill="currentColor"></path></svg>Paper</a>
+  <a class="tag" href="https://github.com/Xavier667/EHETM" rel="noopener noreferrer" target="_blank"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="m8.7 16.6-5-4.6 5-4.6 1.2 1.4L6.4 12l3.5 3.2-1.2 1.4Zm6.6 0-1.2-1.4 3.5-3.2-3.5-3.2 1.2-1.4 5 4.6-5 4.6ZM11.1 18l-1.8-.6L12.9 6l1.8.6L11.1 18Z" fill="currentColor"></path></svg>Code</a>
+  <a class="tag" href="https://pan.baidu.com/share/init?surl=XsDaJTYYfcgNENzEL0_wqw&pwd=qaz3" rel="noopener noreferrer" target="_blank"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M12 3C7.6 3 4 4.3 4 6v12c0 1.7 3.6 3 8 3s8-1.3 8-3V6c0-1.7-3.6-3-8-3Zm0 2c3.7 0 5.8.9 6 1-.2.2-2.3 1-6 1s-5.8-.9-6-1c.2-.2 2.3-1 6-1Zm6 5c-.8.6-3 1.2-6 1.2S6.8 10.6 6 10V8.3c1.5.6 3.7.9 6 .9s4.5-.3 6-.9V10Zm0 4c-.8.6-3 1.2-6 1.2S6.8 14.6 6 14v-1.7c1.5.6 3.7.9 6 .9s4.5-.3 6-.9V14Zm-6 5.2c-3 0-5.2-.6-6-1.2v-1.7c1.5.6 3.7.9 6 .9s4.5-.3 6-.9V18c-.8.6-3 1.2-6 1.2Z" fill="currentColor"></path></svg>Dataset (pw:qaz3)</a>
+</div>
+</div><div class="pub-thumb" href="#"><img alt="EHETM paper thumbnail" src="images/publication/CVPR2026_EHETM.png"/></div></article>
+
+<article class="pub"><div class="pub-content"><h3 class="pub-title">NER-Net+: Seeing Motion at Nighttime with an Event Camera</h3>
+<p class="pub-meta"><strong>Haoyue Liu</strong>, Jinghan Xu, Shihan Peng, Yi Chang, Hanyu Zhou, Yuxing Duan, Lin Zhu, Yonghong Tian, Luxin Yan</p>
+<div class="pub-venue">IEEE Transactions on Pattern Analysis and Machine Intelligence (TPAMI), 2025</div><div class="pub-keywords"><strong>Keywords: </strong>event camera; event reconstruction; HDR imaging</div>
+<div class="tag-row">
+  <a class="tag" href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=10904298" rel="noopener noreferrer" target="_blank"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M6 2h8l4 4v16H6V2Zm7 1.5V7h3.5L13 3.5ZM8.5 11h7v1.5h-7V11Zm0 3.5h7v1.5h-7v-1.5Zm0 3.5h5v1.5h-5V18Z" fill="currentColor"></path></svg>Paper</a>
+  <a class="tag" href="https://github.com/Liu-haoyue/NER-Net" rel="noopener noreferrer" target="_blank"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="m8.7 16.6-5-4.6 5-4.6 1.2 1.4L6.4 12l3.5 3.2-1.2 1.4Zm6.6 0-1.2-1.4 3.5-3.2-3.5-3.2 1.2-1.4 5 4.6-5 4.6ZM11.1 18l-1.8-.6L12.9 6l1.8.6L11.1 18Z" fill="currentColor"></path></svg>Code</a>
+  <a class="tag" href="https://pan.baidu.com/share/init?surl=h-iI5H_5DUIc2dQKvGXUkA&pwd=cknc" rel="noopener noreferrer" target="_blank"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M12 3C7.6 3 4 4.3 4 6v12c0 1.7 3.6 3 8 3s8-1.3 8-3V6c0-1.7-3.6-3-8-3Zm0 2c3.7 0 5.8.9 6 1-.2.2-2.3 1-6 1s-5.8-.9-6-1c.2-.2 2.3-1 6-1Zm6 5c-.8.6-3 1.2-6 1.2S6.8 10.6 6 10V8.3c1.5.6 3.7.9 6 .9s4.5-.3 6-.9V10Zm0 4c-.8.6-3 1.2-6 1.2S6.8 14.6 6 14v-1.7c1.5.6 3.7.9 6 .9s4.5-.3 6-.9V14Zm-6 5.2c-3 0-5.2-.6-6-1.2v-1.7c1.5.6 3.7.9 6 .9s4.5-.3 6-.9V18c-.8.6-3 1.2-6 1.2Z" fill="currentColor"></path></svg>Dataset (pwd:cknc)</a>
+</div>
+</div><div class="pub-thumb" href="#"><img alt="NER-Net+ paper thumbnail" src="images/publication/TPAMI2025_NER.png"/></div></article>
+
+<article class="pub"><div class="pub-content"><h3 class="pub-title">TimeTracker: Event-based Continuous Point Tracking for Video Frame Interpolation with Non-linear Motion</h3>
+<p class="pub-meta"><strong>Haoyue Liu</strong>, Jinghan Xu, Yi Chang, Hanyu Zhou, Zhao Haozhi, Lin Wang, Luxin Yan</p>
+<div class="pub-venue">IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR), 2025</div><div class="pub-keywords"><strong>Keywords: </strong>event camera; video frame interpolation; point tracking</div>
+<div class="tag-row">
+  <a class="tag" href="https://openaccess.thecvf.com/content/CVPR2025/papers/Liu_TimeTracker_Event-based_Continuous_Point_Tracking_for_Video_Frame_Interpolation_with_CVPR_2025_paper.pdf" rel="noopener noreferrer" target="_blank"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M6 2h8l4 4v16H6V2Zm7 1.5V7h3.5L13 3.5ZM8.5 11h7v1.5h-7V11Zm0 3.5h7v1.5h-7v-1.5Zm0 3.5h5v1.5h-5V18Z" fill="currentColor"></path></svg>Paper</a>
+  <a class="tag" href="https://openaccess.thecvf.com/content/CVPR2025/supplemental/Liu_TimeTracker_Event-based_Continuous_CVPR_2025_supplemental.pdf" rel="noopener noreferrer" target="_blank"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M7.5 12.5 12 8a3.2 3.2 0 0 1 4.5 4.5l-5.6 5.6a4.7 4.7 0 0 1-6.6-6.6l6.1-6.1a6.1 6.1 0 0 1 8.6 8.6l-5.3 5.3-1.3-1.3 5.3-5.3a4.2 4.2 0 0 0-5.9-5.9l-6.1 6.1a2.8 2.8 0 0 0 4 4l5.6-5.6a1.3 1.3 0 1 0-1.8-1.8L8.9 14l-1.4-1.5Z" fill="currentColor"></path></svg>Supp</a>
+</div>
+</div><div class="pub-thumb" href="#"><img alt="Timetracker paper thumbnail" src="images/publication/CVPR2025-TimeTracker.png"/></div></article>
+
+<article class="pub"><div class="pub-content"><h3 class="pub-title">Event-Structured Modeling and Detection of Faint Space Objects with a Dynamic Vision Sensor</h3>
+<p class="pub-meta"> Hao Dong, Zhiwei Shi, <strong>Haoyue Liu*</strong>, Yi Chang, Luxin Yan</p>
+<div class="pub-venue">Acta Optica Sinica (光学学报), 2025</div><div class="pub-keywords"><strong>Keywords: </strong>event camera; object detection; structure modeling</div>
+<div class="tag-row">
+  <a class="tag" href="https://www.opticsjournal.net/Articles/OJb3fd8bd51a6d6d9d/Abstract" rel="noopener noreferrer" target="_blank"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M6 2h8l4 4v16H6V2Zm7 1.5V7h3.5L13 3.5ZM8.5 11h7v1.5h-7V11Zm0 3.5h7v1.5h-7v-1.5Zm0 3.5h5v1.5h-5V18Z" fill="currentColor"></path></svg>Paper</a>
+</div>
+</div><div class="pub-thumb" href="#"><img alt="Detection paper thumbnail" src="images/publication/Acta2024_SEFT.jpg"/></div></article>
+
+<article class="pub"><div class="pub-content"><h3 class="pub-title">Seeing Motion at Nighttime with an Event Camera</h3>
+<p class="pub-meta"><strong>Haoyue Liu</strong>, Shihan Peng, Lin Zhu, Yi Chang, Hanyu, Luxin Yan</p>
+<div class="pub-venue">IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR), 2024</div><div class="pub-keywords"><strong>Keywords: </strong>event camera; event reconstruction; event trailing suppression</div>
+<div class="tag-row">
+  <a class="tag" href="https://openaccess.thecvf.com/content/CVPR2024/papers/Liu_Seeing_Motion_at_Nighttime_with_an_Event_Camera_CVPR_2024_paper.pdf" rel="noopener noreferrer" target="_blank"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M6 2h8l4 4v16H6V2Zm7 1.5V7h3.5L13 3.5ZM8.5 11h7v1.5h-7V11Zm0 3.5h7v1.5h-7v-1.5Zm0 3.5h5v1.5h-5V18Z" fill="currentColor"></path></svg>Paper</a>
+  <a class="tag" href="https://openaccess.thecvf.com/content/CVPR2024/supplemental/Liu_Seeing_Motion_at_CVPR_2024_supplemental.zip" rel="noopener noreferrer" target="_blank"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M7.5 12.5 12 8a3.2 3.2 0 0 1 4.5 4.5l-5.6 5.6a4.7 4.7 0 0 1-6.6-6.6l6.1-6.1a6.1 6.1 0 0 1 8.6 8.6l-5.3 5.3-1.3-1.3 5.3-5.3a4.2 4.2 0 0 0-5.9-5.9l-6.1 6.1a2.8 2.8 0 0 0 4 4l5.6-5.6a1.3 1.3 0 1 0-1.8-1.8L8.9 14l-1.4-1.5Z" fill="currentColor"></path></svg>Supp</a>
+  <a class="tag" href="https://github.com/Liu-haoyue/NER-Net" rel="noopener noreferrer" target="_blank"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="m8.7 16.6-5-4.6 5-4.6 1.2 1.4L6.4 12l3.5 3.2-1.2 1.4Zm6.6 0-1.2-1.4 3.5-3.2-3.5-3.2 1.2-1.4 5 4.6-5 4.6ZM11.1 18l-1.8-.6L12.9 6l1.8.6L11.1 18Z" fill="currentColor"></path></svg>Code</a>
+  <a class="tag" href="https://pan.baidu.com/share/init?surl=h-iI5H_5DUIc2dQKvGXUkA&pwd=cknc" rel="noopener noreferrer" target="_blank"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M12 3C7.6 3 4 4.3 4 6v12c0 1.7 3.6 3 8 3s8-1.3 8-3V6c0-1.7-3.6-3-8-3Zm0 2c3.7 0 5.8.9 6 1-.2.2-2.3 1-6 1s-5.8-.9-6-1c.2-.2 2.3-1 6-1Zm6 5c-.8.6-3 1.2-6 1.2S6.8 10.6 6 10V8.3c1.5.6 3.7.9 6 .9s4.5-.3 6-.9V10Zm0 4c-.8.6-3 1.2-6 1.2S6.8 14.6 6 14v-1.7c1.5.6 3.7.9 6 .9s4.5-.3 6-.9V14Zm-6 5.2c-3 0-5.2-.6-6-1.2v-1.7c1.5.6 3.7.9 6 .9s4.5-.3 6-.9V18c-.8.6-3 1.2-6 1.2Z" fill="currentColor"></path></svg>Dataset (pwd:cknc)</a>
+</div>
+</div><div class="pub-thumb" href="#"><img alt="NER-Net paper thumbnail" src="images/publication/CVPR2024-NER-Net.png"/></div></article>
+
+<article class="pub"><div class="pub-content"><h3 class="pub-title">Tracking through Severe Occlusion via Event-Derived Transient Cues</h3>
+<p class="pub-meta">Hao Dong, Yujin Liu, <strong>Haoyue Liu</strong>, Zhenyu Wang, Shihan Peng, Zhiwei Shi, Yi Chang, Luxin Yan</p>
+<div class="pub-venue">IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR), 2026</div><div class="pub-keywords"><strong>Keywords: </strong>event camera; low-light imaging; diffusion model</div>
+<div class="tag-row">
+  <a class="tag" href="" rel="noopener noreferrer" target="_blank"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M6 2h8l4 4v16H6V2Zm7 1.5V7h3.5L13 3.5ZM8.5 11h7v1.5h-7V11Zm0 3.5h7v1.5h-7v-1.5Zm0 3.5h5v1.5h-5V18Z" fill="currentColor"></path></svg>Paper</a>
+</div>
+</div><div class="pub-thumb" href="#"><img alt="Tracking paper thumbnail" src="images/publication/CVPR2026_Tracking.png"/></div></article>
+
+<article class="pub"><div class="pub-content"><h3 class="pub-title">From Spatiotemporal Decoupling to Kinematic Smoothing: A Robust Pipeline for Event-Based Spacecraft Pose Estimation</h3>
+<p class="pub-meta">Yuteng Zeng, Yuyang Xiong, Xiaoxiong Wang, Xiaoran Zhang, <strong>Haoyue Liu</strong>, Yi Chang*, Luxin Yan</p>
+<div class="pub-venue">IEEE/CVF Conference on Computer Vision and Pattern Recognition Workshop (CVPRW), 2026</div><div class="pub-keywords"><strong>Keywords: </strong>event camera; spacecraft pose estimation</div>
+<div class="tag-row">
+  <a class="tag" href="" rel="noopener noreferrer" target="_blank"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M6 2h8l4 4v16H6V2Zm7 1.5V7h3.5L13 3.5ZM8.5 11h7v1.5h-7V11Zm0 3.5h7v1.5h-7v-1.5Zm0 3.5h5v1.5h-5V18Z" fill="currentColor"></path></svg>Paper</a>
+</div>
+</div><div class="pub-thumb" href="#"><img alt="Workshop paper thumbnail" src="images/publication/CVPR2026W.png"/></div></article>
+
+<article class="pub"><div class="pub-content"><h3 class="pub-title">Injecting Frame-Event Complementary Fusion into Diffusion for Optical Flow in Challenging Scenes</h3>
+<p class="pub-meta">Haonan Wang, Hanyu Zhou, <strong>Haoyue Liu</strong>, Luxin Yan</p>
+<div class="pub-venue">Annual Conference on Neural Information Processing Systems (NeurIPS), <strong><span style="color:#00704f">Spotlight</span></strong>, 2025</div><div class="pub-keywords"><strong>Keywords: </strong>event camera; optical flow estimation; diffusion model</div>
+<div class="tag-row">
+  <a class="tag" href="https://arxiv.org/pdf/2510.10577" rel="noopener noreferrer" target="_blank"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M6 2h8l4 4v16H6V2Zm7 1.5V7h3.5L13 3.5ZM8.5 11h7v1.5h-7V11Zm0 3.5h7v1.5h-7v-1.5Zm0 3.5h5v1.5h-5V18Z" fill="currentColor"></path></svg>Paper</a>
+  <a class="tag" href="https://github.com/Haonan-Wang-aurora/Diff-ABFlow" rel="noopener noreferrer" target="_blank"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="m8.7 16.6-5-4.6 5-4.6 1.2 1.4L6.4 12l3.5 3.2-1.2 1.4Zm6.6 0-1.2-1.4 3.5-3.2-3.5-3.2 1.2-1.4 5 4.6-5 4.6ZM11.1 18l-1.8-.6L12.9 6l1.8.6L11.1 18Z" fill="currentColor"></path></svg>Code</a>
+</div>
+</div><div class="pub-thumb" href="#"><img alt="ABFlow paper thumbnail" src="images/publication/NIPS2025-difflow.png"/></div></article>
+
+<article class="pub"><div class="pub-content"><h3 class="pub-title">STD-GS: Exploring Frame-Event Interaction for SpatioTemporal-Disentangled Gaussian Splatting to Reconstruct High-Dynamic Scene</h3>
+<p class="pub-meta">Hanyu Zhou, Haonan Wang, <strong>Haoyue Liu</strong>, Yuxing Duan, Luxin Yan, Gim Hee Lee</p>
+<div class="pub-venue">IEEE/CVF Conference on Computer Vision and Pattern Recognition (ICCV), 2025</div><div class="pub-keywords"><strong>Keywords: </strong>event camera; 3D reconstruction; gaussian splatting</div>
+<div class="tag-row">
+  <a class="tag" href="https://openaccess.thecvf.com/content/ICCV2025/papers/Zhou_STD-GS_Exploring_Frame-Event_Interaction_for_SpatioTemporal-Disentangled_Gaussian_Splatting_to_Reconstruct_ICCV_2025_paper.pdf" rel="noopener noreferrer" target="_blank"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M6 2h8l4 4v16H6V2Zm7 1.5V7h3.5L13 3.5ZM8.5 11h7v1.5h-7V11Zm0 3.5h7v1.5h-7v-1.5Zm0 3.5h5v1.5h-5V18Z" fill="currentColor"></path></svg>Paper</a>
+  <a class="tag" href="https://openaccess.thecvf.com/content/ICCV2025/supplemental/Zhou_STD-GS_Exploring_Frame-Event_ICCV_2025_supplemental.zip" rel="noopener noreferrer" target="_blank"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M7.5 12.5 12 8a3.2 3.2 0 0 1 4.5 4.5l-5.6 5.6a4.7 4.7 0 0 1-6.6-6.6l6.1-6.1a6.1 6.1 0 0 1 8.6 8.6l-5.3 5.3-1.3-1.3 5.3-5.3a4.2 4.2 0 0 0-5.9-5.9l-6.1 6.1a2.8 2.8 0 0 0 4 4l5.6-5.6a1.3 1.3 0 1 0-1.8-1.8L8.9 14l-1.4-1.5Z" fill="currentColor"></path></svg>Supp</a>
+  <a class="tag" href="https://github.com/Haonan-Wang-aurora/STD-GS" rel="noopener noreferrer" target="_blank"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="m8.7 16.6-5-4.6 5-4.6 1.2 1.4L6.4 12l3.5 3.2-1.2 1.4Zm6.6 0-1.2-1.4 3.5-3.2-3.5-3.2 1.2-1.4 5 4.6-5 4.6ZM11.1 18l-1.8-.6L12.9 6l1.8.6L11.1 18Z" fill="currentColor"></path></svg>Code</a>
+</div>
+</div><div class="pub-thumb" href="#"><img alt="STD-GS paper thumbnail" src="images/publication/ICCV2025_-STDGS.png"/></div></article>
+
+<article class="pub"><div class="pub-content"><h3 class="pub-title">Bridge Frame and Event: Common Spatiotemporal Fusion for High-Dynamic Scene Optical Flow</h3>
+<p class="pub-meta">Hanyu Zhou, Haonan Wang, <strong>Haoyue Liu</strong>, Yuxing Duan, Yi Chang, Luxin Yan</p>
+<div class="pub-venue">IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR), 2025</div><div class="pub-keywords"><strong>Keywords: </strong>event camera; optical flow estimation; domain adaptation</div>
+<div class="tag-row">
+  <a class="tag" href="https://openaccess.thecvf.com/content/CVPR2025/papers/Zhou_Bridge_Frame_and_Event_Common_Spatiotemporal_Fusion_for_High-Dynamic_Scene_CVPR_2025_paper.pdf" rel="noopener noreferrer" target="_blank"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M6 2h8l4 4v16H6V2Zm7 1.5V7h3.5L13 3.5ZM8.5 11h7v1.5h-7V11Zm0 3.5h7v1.5h-7v-1.5Zm0 3.5h5v1.5h-5V18Z" fill="currentColor"></path></svg>Paper</a>
+</div>
+</div><div class="pub-thumb" href="#"><img alt="SceneFlow paper thumbnail" src="images/publication/CVPR2025_Brige.png"/></div></article>
+
+<article class="pub"><div class="pub-content"><h3 class="pub-title">Bring Event into RGB and LiDAR: Hierarchical Visual-Motion Fusion for Scene Flow</h3>
+<p class="pub-meta">Hanyu Zhou, Haonan Wang, <strong>Haoyue Liu</strong>, Yuxing Duan, Yi Chang, Luxin Yan</p>
+<div class="pub-venue">IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR), 2024</div><div class="pub-keywords"><strong>Keywords: </strong>event camera; scene flow estimation</div>
+<div class="tag-row">
+  <a class="tag" href="https://openaccess.thecvf.com/content/CVPR2024/papers/Zhou_Bring_Event_into_RGB_and_LiDAR_Hierarchical_Visual-Motion_Fusion_for_CVPR_2024_paper.pdf" rel="noopener noreferrer" target="_blank"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M6 2h8l4 4v16H6V2Zm7 1.5V7h3.5L13 3.5ZM8.5 11h7v1.5h-7V11Zm0 3.5h7v1.5h-7v-1.5Zm0 3.5h5v1.5h-5V18Z" fill="currentColor"></path></svg>Paper</a>
+  <a class="tag" href="https://github.com/hyzhouboy/VisMoFlow" rel="noopener noreferrer" target="_blank"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="m8.7 16.6-5-4.6 5-4.6 1.2 1.4L6.4 12l3.5 3.2-1.2 1.4Zm6.6 0-1.2-1.4 3.5-3.2-3.5-3.2 1.2-1.4 5 4.6-5 4.6ZM11.1 18l-1.8-.6L12.9 6l1.8.6L11.1 18Z" fill="currentColor"></path></svg>Code</a>
+</div>
+</div><div class="pub-thumb" href="#"><img alt="VisMoFlow paper thumbnail" src="images/publication/CVPR2024_VisMoFlow.png"/></div></article>
+
+<article class="pub"><div class="pub-content"><h3 class="pub-title">Exploring the Common Appearance-Boundary Adaptation for Nighttime Optical Flow</h3>
+<p class="pub-meta">Hanyu Zhou, Yi Chang, <strong>Haoyue Liu</strong>, Wending Yan, Yuxing Duan, Zhiwei Shi, Luxin Yan</p>
+<div class="pub-venue">International Conference on Learning Representations (ICLR), <strong><span style="color:#00704f">Spotlight</span></strong>, 2024</div><div class="pub-keywords"><strong>Keywords: </strong>event camera; optical flow estimation</div>
+<div class="tag-row">
+  <a class="tag" href="https://openreview.net/pdf?id=776lhoaulC" rel="noopener noreferrer" target="_blank"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M6 2h8l4 4v16H6V2Zm7 1.5V7h3.5L13 3.5ZM8.5 11h7v1.5h-7V11Zm0 3.5h7v1.5h-7v-1.5Zm0 3.5h5v1.5h-5V18Z" fill="currentColor"></path></svg>Paper</a>
+  <a class="tag" href="https://github.com/hyzhouboy/NightFlow" rel="noopener noreferrer" target="_blank"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="m8.7 16.6-5-4.6 5-4.6 1.2 1.4L6.4 12l3.5 3.2-1.2 1.4Zm6.6 0-1.2-1.4 3.5-3.2-3.5-3.2 1.2-1.4 5 4.6-5 4.6ZM11.1 18l-1.8-.6L12.9 6l1.8.6L11.1 18Z" fill="currentColor"></path></svg>Code</a>
+</div>
+</div><div class="pub-thumb" href="#"><img alt="NightFlow paper thumbnail" src="images/publication/ICLR2024-ABDA.png"/></div></article>
+
+</div>
+</div>
+
+
+<div class="pub-group">
+<h3 class="pub-group-title">Under review</h3>
+<div class="pub-list">
+
+<article class="pub"><div class="pub-content"><h3 class="pub-title">Nighttime Scene Optical Flow: Common Spatio-Temporal Motion Adaptation</h3>
+<p class="pub-meta">Hanyu Zhou, Haonan Wang, <strong>Haoyue Liu</strong>, Luxin Yan, Gim Hee Lee</p>
+<div class="pub-venue">IEEE Transactions on Pattern Analysis and Machine Intelligence (TPAMI), 2026, Under review</div><div class="pub-keywords"><strong>Keywords: </strong>event camera; optical flow estimation; domain adaptation</div>
+<div class="tag-row">
+  <a class="tag" href="" rel="noopener noreferrer" target="_blank"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M6 2h8l4 4v16H6V2Zm7 1.5V7h3.5L13 3.5ZM8.5 11h7v1.5h-7V11Zm0 3.5h7v1.5h-7v-1.5Zm0 3.5h5v1.5h-5V18Z" fill="currentColor"></path></svg>Paper</a>
+  <a class="tag" href="https://github.com/hyzhouboy/NightFlow" rel="noopener noreferrer" target="_blank"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="m8.7 16.6-5-4.6 5-4.6 1.2 1.4L6.4 12l3.5 3.2-1.2 1.4Zm6.6 0-1.2-1.4 3.5-3.2-3.5-3.2 1.2-1.4 5 4.6-5 4.6ZM11.1 18l-1.8-.6L12.9 6l1.8.6L11.1 18Z" fill="currentColor"></path></svg>Code</a>
+</div>
+</div><div class="pub-thumb" href="#"><img alt="NER-Net+ paper thumbnail" src="images/publication/TPAMI2026_NightFlow.png"/></div></article>
+
+<article class="pub"><div class="pub-content"><h3 class="pub-title">UEE-Net: Unified Event Enhancement Framework for Denoising and Completion</h3>
+<p class="pub-meta">Yuxing Duan, Xiaoran Zhang, Shihan Peng, Yi Chang, <strong>Haoyue Liu</strong>, Hanyu Zhou, Sheng Zhong, Luxin Yan</p>
+<div class="pub-venue">IEEE Transactions on Pattern Analysis and Machine Intelligence (TPAMI), 2026, Under review</div><div class="pub-keywords"><strong>Keywords: </strong>event camera; event denoising; event completion</div>
+<div class="tag-row">
+  <a class="tag" href="" rel="noopener noreferrer" target="_blank"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M6 2h8l4 4v16H6V2Zm7 1.5V7h3.5L13 3.5ZM8.5 11h7v1.5h-7V11Zm0 3.5h7v1.5h-7v-1.5Zm0 3.5h5v1.5h-5V18Z" fill="currentColor"></path></svg>Paper</a>
+</div>
+</div><div class="pub-thumb" href="#"><img alt="NER-Net+ paper thumbnail" src="images/publication/TPAMI2026_UEE.png"/></div></article>
+
+<article class="pub"><div class="pub-content"><h3 class="pub-title">Adapting Depth Anything to Adverse Imaging Conditions with Events</h3>
+<p class="pub-meta">Yuxing Duan, Xiaoran Zhang, Shihan Peng, Yi Chang, <strong>Haoyue Liu*</strong>, Hanyu Zhou, Sheng Zhong, Luxin Yan</p>
+<div class="pub-venue">IEEE Robotics and Automation Letters (RAL), 2026, Under review</div><div class="pub-keywords"><strong>Keywords: </strong>event camera; depth estimation; foundation models</div>
+<div class="tag-row">
+  <a class="tag" href="" rel="noopener noreferrer" target="_blank"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M6 2h8l4 4v16H6V2Zm7 1.5V7h3.5L13 3.5ZM8.5 11h7v1.5h-7V11Zm0 3.5h7v1.5h-7v-1.5Zm0 3.5h5v1.5h-5V18Z" fill="currentColor"></path></svg>Paper</a>
+</div>
+</div><div class="pub-thumb" href="#"><img alt="NER-Net+ paper thumbnail" src="images/publication/RAL2026_Depth.png"/></div></article>
+
+</div>
+</div>
+</section>
+
+<!--
+<section class="section" id="awards">
+<div class="section-head"><div><h2 class="section-title">Awards</h2><p class="section-kicker">Awards and honors.</p></div></div>
+<div class="cards-2">
+<article class="award"><h3>[年份] [奖项名称]</h3><p>[授予单位 / 会议 / 学校] · [一句话说明]</p></article>
+<article class="award"><h3>[年份] [奖学金 / 荣誉称号]</h3><p>[授予单位] · [一句话说明]</p></article>
+<article class="award"><h3>[年份] [竞赛/论文/项目奖励]</h3><p>[奖励说明，可替换为真实内容]</p></article>
+<article class="award"><h3>[年份] [其他荣誉]</h3><p>[奖励说明，可替换为真实内容]</p></article>
+</div>
+</section>
+-->
+
+<section class="section" id="awards">
+<div class="section-head"><div><h2 class="section-title">Awards</h2><p class="section-kicker">Academic reviewing services.</p></div></div>
+<div class="service-text">
+  <li style="margin: 10px 0px 0px 5px" ><span style="color:Red">2026.03</span>, <strong> 1st place place in the track 'Event-Based Pose Estimation' in the CVPR'26 SPARK AI4Space Challenge</strong>.</li>
+	<li style="margin: 10px 0px 0px 5px" ><span style="color:Red">2025.06</span>, <strong>Outstanding Graduate</strong>.</li>
+	<li style="margin: 10px 0px 0px 5px" ><span style="color:Red">2021.09-2025.06</span>, <strong>First-class Scholarship for Doctoral Students</strong>.</li>
+	<li style="margin: 10px 0px 0px 5px" ><span style="color:Red">2024.12</span>, <strong>Merit Student</strong>.</li>
+	<li style="margin: 10px 0px 0px 5px" ><span style="color:Red">2023.12</span>, <strong>Active Participants Award in Extracurricular Activities</strong>.</li>
+	<li style="margin: 10px 0px 0px 5px" ><span style="color:Red">2023.06</span>, <strong> 1st place in the track 'Atmospheric Turbulence Mitigation' in the CVPR'23 UG2+ Challenge</strong>.</li>
+	<li style="margin: 10px 0px 0px 5px" ><span style="color:Red">2022.12</span>, <strong>Excellent Postgraduate Cadre Award</strong>.</li>
+</div>
+</section>
+
+<section class="section" id="services">
+<div class="section-head"><div><h2 class="section-title">Academic Services</h2><p class="section-kicker">Academic reviewing services.</p></div></div>
+<div class="service-text">
+<p><strong>Journal Reviewers:</strong> IJCV, TIP, TCSVT, TMM, RAL.</p>
+<p><strong>Conference Reviewers:</strong> CVRR, ICCV, ECCV, NIPS, AAAI, ICRA.</p>
+</div>
+</section>
+
+<div id="footer">
+  <div id="footer-text"></div>
+  </div>
+  <div id = "logo" style="margin-top: 10px; text-align:center">
+    <div align="center" style="margin:auto;padding-top:10px">
+      <div align="center">
+        <!-- <script type='text/javascript' id='mapmyvisitors' src='https://mapmyvisitors.com/map.js?cl=ffffff&w=400&t=tt&d=RvNs3EgaHTaj7HSSlDqnISVThDMgV3AdypyqNFyt5XA'></script> -->
+        <script type="text/javascript" id="mapmyvisitors" src="//mapmyvisitors.com/map.js?d=C_KAnyS5StRjaOiYjbjuQ1wn6q1yqdgBpyM-0l9QkGQ&cl=ffffff&w=a"></script>
+      </div>
+        <br>
+    <!-- &copy; Haoyue Liu | <span style="color:Red">Last updated: APril., 2026</span> -->
+      </div>
+  </div>     
+</div>
+
+<footer class="footer">© 2026 Haoyue Liu. Built as a single-page academic homepage. Last updated: 2026-04-27.</footer>
+</main>
+</body>
+</html>
+
